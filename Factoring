@@ -1,0 +1,79 @@
+import javax.swing.JOptionPane;
+
+public class Factors {
+
+	public static void main(String[] args) {
+		// finding the factors of any given number
+		int input = 0, i, result = 0;
+		double doubleInput;
+		String output = "", inputNumber = "";
+		boolean validInput = false;
+		
+		
+		//	input of number 
+		while (validInput == false)
+		{
+		inputNumber = JOptionPane.showInputDialog("Please enter the whole number you wish to find the factors of.");
+		int length = inputNumber.length();
+		for (i=0; i < length; i++)
+		{
+			if (Character.isDigit(inputNumber.charAt(i)) == true || inputNumber.substring(i).contains("."))
+			{
+				continue;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null,  "Cannot enter a non-number!", "Invalid input", JOptionPane.ERROR_MESSAGE);
+				
+				inputNumber = JOptionPane.showInputDialog("Please enter the whole number you wish to find the factors of.");
+			}
+			
+		}
+		
+		
+		doubleInput = Double.parseDouble(inputNumber);
+		input = (int)doubleInput;
+		if (input == 0)
+		{
+		JOptionPane.showMessageDialog(null,  "Cannot enter zero!", "Invalid input", JOptionPane.ERROR_MESSAGE);
+		} // end if
+		else
+		{
+			validInput = true;
+		}
+		input = Math.abs(input);
+		} //  end while
+		
+		// divide the input by several numbers until whole numbers are found
+		for (i=1; i <= input; i++)
+		{
+			
+			
+			if (input % i == 0)
+			{
+			result = (input / i);
+			if (result == 1)
+			{
+				output += result + ".";
+			}
+			else
+			{
+				output += result + ", ";
+			}
+			
+			
+			} //  end if
+			
+			
+			
+			
+	} //  end for
+		
+		
+		JOptionPane.showMessageDialog(null, output, "Your list of factors", JOptionPane.INFORMATION_MESSAGE);
+	} // end class
+
+} 	// end main
+
+
+
